@@ -1,0 +1,60 @@
+//Linkedlist
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+    Node prev;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+        this.prev=null;
+    }
+}
+class Main {
+    Node head;
+    Node tail;
+    void add(int data){
+        Node newnode = new Node(data);
+        if(head==null){
+             head =tail= newnode;
+        }else{
+           
+            tail.next=newnode;
+            newnode.prev=tail;
+            tail=newnode;
+        }
+    }
+    
+    void Forw(){
+        Node current=head;
+        while(current != null){
+            System.out.print(current.data+" ");
+            current=current.next;
+        }
+    System.out.println();
+    }
+    void back(){
+        Node current=tail;
+        while(current != null ){
+            System.out.print(current.data+" ");
+            current=current.prev;
+        }System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        Main list=new Main();
+        for(int i=0;i<n;i++){
+            int data=sc.nextInt();
+            list.add(data);
+        }
+        list.Forw();
+        list.back();
+    }
+    
+}
+
+
+
+
+
