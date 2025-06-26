@@ -1,0 +1,23 @@
+//Reverse Words
+
+import java.util.*;
+
+class Main {
+    public static String RverseWord(String s){
+        String[] arr=s.split(" ");
+        StringBuilder str = new StringBuilder();
+        
+        for(String num: arr){
+            StringBuilder sb = new StringBuilder(num).reverse();
+            str.append(sb+" ");
+        }
+        return str.toString().trim();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String s=sc.nextLine();
+       System.out.print(RverseWord(s));
+        
+    }
+}
