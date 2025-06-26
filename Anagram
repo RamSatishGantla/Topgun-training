@@ -1,0 +1,26 @@
+//Anagram
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String s=sc.nextLine();
+        String s1=sc.nextLine();
+        char[] arr=s.toCharArray();
+        char[] arr1=s1.toCharArray();
+       
+        int n=arr.length;
+        int m=arr1.length;
+        Arrays.sort(arr);
+        Arrays.sort(arr1);
+        
+        if(Arrays.equals(arr,arr1)   ){
+            System.out.println("Anagram :");
+            
+        }else{
+            System.out.println("Not");
+        }
+    }
+}
