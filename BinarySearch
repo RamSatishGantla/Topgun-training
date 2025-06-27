@@ -3,7 +3,7 @@
 import java.util.*;
 class Main {
     public static int BinarySearch(int[] arr,int l,int r,int k){
-        while(l < r){
+        while(l <= r){
             int mid=l+(r-l)/2;
             if(arr[mid] == k){
                 return mid;
