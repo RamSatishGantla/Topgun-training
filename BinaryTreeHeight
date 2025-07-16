@@ -1,0 +1,35 @@
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+    Node(int val)
+    {
+        this.data=val;
+        this.left=null;
+        this.right=null;
+    }
+}
+public class BinaryTreeHeight {
+    public static int findheight(Node root){
+        if(root==null) {
+            return -1;
+        }
+        int leftnode=findheight(root.left);
+        int rightnode=findheight(root.right);
+        return Math.max(leftnode,rightnode)+1;
+    }
+    public static void main(String[] args) {
+        //Scanner sc = new Scanner(System.in);
+        Node tree=new Node(1);
+        tree.left=new Node(2);
+        tree.right=new Node(3);
+        tree.left.left=new Node(4);
+        tree.left.right=new Node(5);
+        int height=findheight(tree);
+        
+        System.out.println( height);
+
+
+    }
+}
