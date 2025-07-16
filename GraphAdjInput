@@ -1,0 +1,176 @@
+
+
+// import java.util.*;
+// class GraphAdjInput
+// {
+//     int V;
+//     List<List<Integer>> adjlist;
+//     GraphAdjInput(int V){
+//         this.V=V;
+//         adjlist=new ArrayList<>();
+//         for(int i=0;i<V;i++)
+//         {
+//             adjlist.add(new ArrayList<>());
+//         }
+//     }
+    
+//     public void addEdge(int u,int v){
+//         adjlist.get(u).add(v);
+//         adjlist.get(v).add(u);
+//     }
+    
+//     public void printlist(){
+//         for(int i=0;i<V;i++){
+//             System.out.print("Vertex "+i+" : ");
+//             for(int neigh: adjlist.get(i)){
+//                 System.out.print(neigh+" ");
+//             }System.out.println();
+//         }
+//     }
+
+//     public static void main(String[] args) 
+//     {
+//         Scanner sc = new Scanner(System.in);
+//         int V=sc.nextInt();
+//         int e=sc.nextInt();
+        
+//         GraphAdjInput graph=new GraphAdjInput(V);
+//         for(int i=0;i<e;i++){
+//             int u=sc.nextInt();
+//             int v=sc.nextInt();
+//             graph.addEdge(u,v);
+//         }
+//         graph.printlist();
+//     }
+// }
+
+
+
+
+// for weighted graphs
+import java.util.*;
+
+class Pair{
+    int node;
+    int weight;
+    Pair(int node,int weight)
+    {
+        this.node=node;
+        this.weight=weight;
+    }
+}
+class GraphAdjInput
+{
+    int V;
+    List<List<Pair>> adjlist;
+    GraphAdjInput(int V){
+        this.V=V;
+        adjlist=new ArrayList<>();
+        for(int i=0;i<V;i++)
+        {
+            adjlist.add(new ArrayList<>());
+        }
+    }
+    
+    public void addEdge(int u,int v,int weight){
+        adjlist.get(u).add(new Pair(v, weight));
+        adjlist.get(v).add(new Pair(u ,weight));
+    }
+    
+    public void printlist(){
+        for(int i=0;i<V;i++){
+            System.out.print("Vertex "+i+" : ");
+            for(Pair p: adjlist.get(i)){
+                System.out.print("("+p.node+",w= "+p.weight+" )");
+            }System.out.println();
+        }
+    }
+
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int V=sc.nextInt();
+        int e=sc.nextInt();
+        
+        GraphAdjInput graph=new GraphAdjInput(V);
+        for(int i=0;i<e;i++){
+            int u=sc.nextInt();
+            int v=sc.nextInt();
+            int w=sc.nextInt();
+            graph.addEdge(u,v,w);
+        }
+        graph.printlist();
+        sc.close();
+    }
+}
+
+
+
+
+
+// import java.util.*;
+// class Graph{
+//     private int V;
+//     private List<List<Integer>> adjlist;
+//     public Graph(int v){
+//         this.V=v;
+//         adjlist=new ArrayList<>();
+//         for(int i=0;i<V;i++){
+//             adjlist.add(new ArrayList<>());
+//         }
+        
+//     }
+    
+//     public void Edges(int u,int v,boolean isDirected){
+//         adjlist.get(u).add(v);
+//         if(!isDirected){
+//             adjlist.get(v).add(u);
+//         }
+        
+//     }
+    
+    
+    
+//     public void printgraph(){
+//         for(int i=0;i<V;i++){
+//             System.out.print(i+" -> ");
+//             for(int nei: adjlist.get(i)){
+//                 System.out.print(nei+" ");
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+// class Main {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         int V= sc.nextInt();
+//         Graph g=new Graph(V);
+//         int E=sc.nextInt();
+        
+//         for(int i=0;i<E;i++){
+//             int v=sc.nextInt();
+//             int u=sc.nextInt();
+//             g.Edges(u,v,false);
+//         }
+//         g.printgraph();
+        
+        
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
