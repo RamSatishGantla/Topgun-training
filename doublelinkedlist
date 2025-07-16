@@ -1,0 +1,142 @@
+
+
+import java.util.*;
+class Node{
+    int data;
+    Node next,prev,child;
+    Node(int val){
+        this.data=val;
+        this.next=null;
+        this.prev=null;
+        this.child=null;
+    }
+}
+class doublelinkedlist{
+    Node head;
+    void add(int val)
+    {
+        Node newnode = new Node(val);
+        if(head == null){
+            head = newnode;
+        }else{
+            Node current=head;
+            while(current.next!=null){
+                
+                current=current.next;
+            }
+            current.next=newnode;
+            newnode.prev = current;
+        }
+    }
+    
+    void delete(int k){
+        Node current=head;
+        while(current!=null)
+        {
+            if(current.data==k){
+                if(current==head){
+                    head=current.next;
+                    if(head != null){
+                        head.prev=null;
+                    }
+                }
+               else{
+                current.prev.next=current.next;
+                if(current.next!=null){
+                    current.next.prev=current.prev;
+                }
+            }
+            return;
+        }
+        current=current.next;
+            
+        }
+    }
+    
+    
+    // void display(){
+    //     Node current=head;
+    //     while(current!=null){
+    //         System.out.print(current.data+" ");
+    //         current=current.next;
+    //     }
+    //     System.out.println();
+    // }
+    
+    void displayrev(){
+        Node current=head;
+        while(current != null && current.next != null){
+            current=current.next;
+        }
+        while(current != null){
+            System.out.print(current.data+" ");
+            current=current.prev;
+        }System.out.println();
+    }
+}
+class Main {
+    
+    public Node flatted(Node head){
+        Node current=head;
+        
+          //  Node current=head;
+            while(current!=null){
+                if(current.child!=null){
+                    Node tail=findTail(current.child);
+                    if(current.next!=null){
+                        current.next.prev=tail;
+                    }
+                    tail.next=current.next;
+
+                    current.next=current.child;
+                    current.child.prev=current;
+
+                    current.child=null;
+                }
+                current=current.next;
+            }
+
+            return head;
+
+
+        
+    }
+    public Node findTail(Node child){
+
+        while(child.next != null){
+            child=child.next;
+        }return child;
+    }
+
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        doublelinkedlist list = new doublelinkedlist();
+        for(int i=0;i<n;i++){
+            int val=sc.nextInt();
+            list.add(val);
+        }
+      //  list.display();
+      int k=sc.nextInt();
+      list.delete(k);
+        list.displayrev();
+        
+        sc.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
